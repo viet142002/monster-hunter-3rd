@@ -14,9 +14,9 @@ export const MenuHeader = [
         title: 'Quest',
         href: '/quests',
     },
-    {
-        id: 4,
-        title: 'Đăng bài',
-        href: '/posts',
-    },
+    // {
+    //     id: 4,
+    //     title: 'Đăng bài',
+    //     href: '/posts',
+    // },
 ];
