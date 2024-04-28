@@ -67,7 +67,7 @@ function PostPage() {
         let thumbnail: string = '';
         setLoading(true);
         if (image instanceof File) {
-            const res = await imageUpload(image);
+            const res = await imageUpload([image]);
             if (res) {
                 thumbnail = res[0].url;
             }
@@ -75,11 +75,11 @@ function PostPage() {
             thumbnail = image;
         }
 
-        console.log(image);
-
         axios
             .post('/api/posts', { ...values, thumbnail })
             .then(res => {
+                setImage(null);
+                form.reset();
                 toast('Tạo bài thành công', {
                     description:
                         'Bài viết của bạn đã được tạo thành công. Tựa đề của bài viết là: ' +
@@ -142,15 +142,15 @@ function PostPage() {
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
-                                                <SelectItem value='pet'>
+                                                {/* <SelectItem value='pet'>
                                                     Thú cưng
-                                                </SelectItem>
-                                                <SelectItem value='weapon'>
+                                                </SelectItem> */}
+                                                {/* <SelectItem value='weapon'>
                                                     Vũ khí
-                                                </SelectItem>
-                                                <SelectItem value='clothes'>
+                                                </SelectItem> */}
+                                                {/* <SelectItem value='clothes'>
                                                     Quần áo
-                                                </SelectItem>
+                                                </SelectItem> */}
                                                 <SelectItem value='quest'>
                                                     Nhiệm vụ
                                                 </SelectItem>
@@ -199,8 +199,8 @@ function PostPage() {
                                         <Img
                                             src={image}
                                             alt='thumbnail'
-                                            width={300}
-                                            height={350}
+                                            width={200}
+                                            height={250}
                                             className='w-full h-auto object-cover rounded-md'
                                         />
                                     ) : (
@@ -209,13 +209,13 @@ function PostPage() {
                                                 URL.createObjectURL(image)
                                             ).toString()}
                                             alt='thumbnail'
-                                            width={300}
-                                            height={350}
-                                            className='w-full h-auto object-cover rounded-md'
+                                            width={200}
+                                            height={250}
+                                            className='w-[200px] h-[250px] mx-auto object-cover rounded-md'
                                         />
                                     )
                                 ) : (
-                                    <div className='w-[300px] h-[350px] bg-gray-200 rounded-md'>
+                                    <div className='w-[200px] h-[250px] mx-auto bg-gray-200 rounded-md'>
                                         <div className='flex items-center justify-center w-full h-full text-gray-500'>
                                             <span>Chọn ảnh</span>
                                         </div>
@@ -238,7 +238,7 @@ function PostPage() {
                                     />
                                 </FormControl>
                                 <FormDescription>
-                                    Nôi dung bài viết.
+                                    Nội dung bài viết.
                                 </FormDescription>
                                 <FormMessage />
                             </FormItem>

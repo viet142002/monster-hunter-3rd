@@ -2,25 +2,17 @@ function Loading() {
     return (
         <>
             <div>
-                <ul className='grid grid-cols-[repeat(auto-fit,300px) justify-between md:justify-center gap-4]'>
-                    <li className='w-full h-[400px]'>
-                        <div className='animate-pulse bg-gray-300 h-full w-full'></div>
-                    </li>
-                    <li className='w-full h-[400px]'>
-                        <div className='animate-pulse bg-gray-300 h-full w-full'></div>
-                    </li>
-                    <li className='w-full h-[400px]'>
-                        <div className='animate-pulse bg-gray-300 h-full w-full'></div>
-                    </li>
-                    <li className='w-full h-[400px]'>
-                        <div className='animate-pulse bg-gray-300 h-full w-full'></div>
-                    </li>
-                    <li className='w-full h-[400px]'>
-                        <div className='animate-pulse bg-gray-300 h-full w-full'></div>
-                    </li>
-                    <li className='w-full h-[400px]'>
-                        <div className='animate-pulse bg-gray-300 h-full w-full'></div>
-                    </li>
+                <ul className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4 justify-items-center justify-between'>
+                    {Array(20)
+                        .fill(null)
+                        .map((_, index) => (
+                            <li
+                                key={index}
+                                className='rounded-md overflow-hidden w-full'
+                            >
+                                <div className='w-full mx-auto h-[300px] animate-pulse bg-gray-300'></div>
+                            </li>
+                        ))}
                 </ul>
             </div>
         </>

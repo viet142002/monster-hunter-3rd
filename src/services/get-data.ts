@@ -14,3 +14,12 @@ export const getListData = async (
         return { error: error.message };
     }
 };
+
+export const getDetailData = async (id: string) => {
+    try {
+        const data = await PostAction.getPostById(id);
+        return { data };
+    } catch (error: any) {
+        return { error: error.message };
+    }
+};

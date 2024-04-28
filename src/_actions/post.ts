@@ -17,10 +17,21 @@ export const PostAction = {
                     await Post.find({
                         tag: tag,
                         ...query,
-                    }).exec()
+                    })
+                        .select('-__v -updatedAt -createdAt -body')
+                        .sort({ createdAt: -1 })
                 )
             );
             return posts;
+        } catch (error) {
+            return error;
+        }
+    },
+    getPostById: async (id: string) => {
+        try {
+            await dbConnect();
+            const post = JSON.parse(JSON.stringify(await Post.findById(id)));
+            return post;
         } catch (error) {
             return error;
         }

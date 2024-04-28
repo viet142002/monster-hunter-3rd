@@ -19,12 +19,12 @@ async function TypePage({
 
     return (
         <>
-            <h1 className='text-xl'>{`Posts with tag: ${type}`}</h1>
-            <nav>
-                <ul className='grid gap-4 grid-cols-[repeat(auto-fit,300px)] justify-between'>
+            <h1 className='text-xl text-center'>{`Posts with tag: ${type}`}</h1>
+            <nav className='mt-4'>
+                <ul className='grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2 md:gap-4 justify-items-center justify-between'>
                     {data?.map((post: Post) => (
-                        <li key={post.id}>
-                            <Link href={`/${type}/${post.id}`}>
+                        <li key={post._id} className='w-full'>
+                            <Link href={`/${type}/${post._id}`}>
                                 <CardPost post={post} />
                             </Link>
                         </li>
