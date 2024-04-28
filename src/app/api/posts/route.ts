@@ -18,8 +18,6 @@ export async function GET(
         params: { tag: Tag; [key: string]: string | string[] | undefined };
     }
 ) {
-    console.log('GET /api/posts');
-
     const data = await PostAction.getAllPost({
         tag: context.params.tag,
     });
