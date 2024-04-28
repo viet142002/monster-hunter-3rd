@@ -1,5 +1,7 @@
+import { CardPost } from '@/components/common';
 import { getListData } from '@/services/get-data';
 import { Tag, Post } from '@/types';
+import axios from 'axios';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -18,24 +20,17 @@ async function TypePage({
     return (
         <>
             <h1 className='text-xl'>{`Posts with tag: ${type}`}</h1>
-            <ul>
-                <li>
-                    <ul>
-                        {data?.map((post: Post) => (
-                            <li key={post.id}>
-                                <Link href={`/${type}/${post.id}`}>
-                                    <h2>{post.title}</h2>
-                                    <div
-                                        dangerouslySetInnerHTML={{
-                                            __html: post.body,
-                                        }}
-                                    />
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </li>
-            </ul>
+            <nav>
+                <ul className='grid gap-4 grid-cols-[repeat(auto-fit,300px)] justify-between'>
+                    {data?.map((post: Post) => (
+                        <li key={post.id}>
+                            <Link href={`/${type}/${post.id}`}>
+                                <CardPost post={post} />
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
         </>
     );
 }

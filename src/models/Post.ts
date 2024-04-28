@@ -23,6 +23,10 @@ const postSchema = new Schema(
             ],
             default: 'other',
         },
+        thumbnail: {
+            type: String,
+            required: true,
+        },
         // user: {
         //     type: Schema.Types.ObjectId,
         //     ref: 'User',

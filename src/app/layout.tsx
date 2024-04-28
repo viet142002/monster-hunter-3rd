@@ -4,6 +4,7 @@ import './globals.css';
 
 import { cn } from '@/lib/utils';
 import { HeaderPrimary } from '@/components/layout';
+import { Toaster } from '@/components/ui/sonner';
 
 const fontSans = FontSans({
     subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({
                 <div className='max-w-[1000px] mx-auto p-4 mt-20'>
                     {children}
                 </div>
+                <Toaster />
             </body>
         </html>
     );

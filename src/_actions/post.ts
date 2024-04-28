@@ -1,8 +1,6 @@
-'use Server';
-
-import { connect } from '@/lib/mongodb';
+import dbConnect from '@/lib/mongodb';
 import Post from '@/models/Post';
-import { Tag } from '@/types';
+import { Post as PostType, Tag } from '@/types';
 
 export const PostAction = {
     getAllPost: async ({
@@ -12,30 +10,28 @@ export const PostAction = {
         tag: Tag;
         query?: { [key: string]: string };
     }) => {
-        await connect();
-        const posts = await Post.find({
-            tag: tag,
-            ...query,
-        }).exec();
-        console.log('🚀 ~ posts:', posts);
-
-        return posts;
+        try {
+            await dbConnect();
+            const posts = JSON.parse(
+                JSON.stringify(
+                    await Post.find({
+                        tag: tag,
+                        ...query,
+                    }).exec()
+                )
+            );
+            return posts;
+        } catch (error) {
+            return error;
+        }
     },
-    createPost: async ({
-        title,
-        body,
-        tag,
-    }: {
-        title: string;
-        body: string;
-        tag: Tag;
-        // user?: string
-    }) => {
-        await connect();
+    createPost: async ({ title, body, tag, thumbnail = '' }: PostType) => {
+        await dbConnect();
         const post = new Post({
             title,
             body,
             tag,
+            thumbnail,
             // user,
         });
         await post.save();

@@ -35,7 +35,6 @@ export function MyEditor(props: any) {
                             return false;
                         },
                         'image.delete': function (src: any) {
-                            // console.log(src);
                             // @ts-ignore
                             const publicId = src.split('/').pop();
                             // @ts-ignore

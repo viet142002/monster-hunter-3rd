@@ -5,7 +5,8 @@ export interface Post {
     title: string;
     body: string;
     tag: Tag;
-    username: string;
+    thumbnail: string;
+    user: string;
     createdAt: string;
     updatedAt: string;
 }

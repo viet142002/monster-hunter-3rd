@@ -2,8 +2,6 @@ export async function GET(
     req: Request,
     context: { params: { [key: string]: string | string[] | undefined } }
 ) {
-    console.log('GET /api/route');
-
     const { params } = context;
 
     if (params && params?.type) {
