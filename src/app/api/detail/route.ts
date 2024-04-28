@@ -6,7 +6,7 @@ export async function GET(
         params: { id: string; [key: string]: string | string[] | undefined };
     }
 ) {
-    const id = context.params.id;
+    const id = context?.params?.id;
 
     if (!id) {
         return Response.json({ message: 'Not found' }, { status: 404 });
