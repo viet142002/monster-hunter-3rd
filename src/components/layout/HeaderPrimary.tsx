@@ -10,8 +10,14 @@ import {
 } from '@/components/ui/navigation-menu';
 
 import { MenuHeader } from '@/constants';
+import { useAuth } from '@/helpers/hooks';
 
 export function HeaderPrimary() {
+    const { user } = useAuth();
+
+    const handleLogout = () => {
+        console.log('Logout');
+    };
     return (
         <div className='flex justify-center p-4 fixed top-0 mx-auto bg-inherit w-full'>
             <NavigationMenu>
@@ -27,6 +33,22 @@ export function HeaderPrimary() {
                             </Link>
                         </NavigationMenuItem>
                     ))}
+
+                    {user ? (
+                        <NavigationMenuItem onClick={handleLogout}>
+                            Đăng xuất
+                        </NavigationMenuItem>
+                    ) : (
+                        <NavigationMenuItem>
+                            <Link href='/login' legacyBehavior passHref>
+                                <NavigationMenuLink
+                                    className={navigationMenuTriggerStyle()}
+                                >
+                                    Đăng nhập
+                                </NavigationMenuLink>
+                            </Link>
+                        </NavigationMenuItem>
+                    )}
                 </NavigationMenuList>
             </NavigationMenu>
         </div>

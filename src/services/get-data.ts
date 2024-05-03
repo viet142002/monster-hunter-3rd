@@ -9,7 +9,9 @@ export const getListData = async (
     try {
         const data = await PostAction.getAllPost({ tag: type, query: query });
 
-        return { data };
+        return {
+            data,
+        };
     } catch (error: any) {
         return { error: error.message };
     }

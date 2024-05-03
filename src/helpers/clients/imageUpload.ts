@@ -35,5 +35,3 @@ export const imageUpload = async (images: any) => {
     }
     return imgArr;
 };
-
-// https://657274567976383:VRamYTGr6huuVoryy3BdXHBwN9w@api.cloudinary.com/v1_1/dpayvmrjo/resources/image/upload/monster-hunter?faces=1&colors=1&media_metadata=1&versions=1
