@@ -1,13 +1,14 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { UserAction } from '@/_actions';
-import { formatError } from '@/helpers/server';
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-    const body = req.body;
+export async function POST(req: Request) {
+    const body = await req.json();
     try {
         const data = await UserAction.login(body);
-        return res.status(200).json(data);
+        return new Response(JSON.stringify(data), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
     } catch (error: unknown) {
-        res.status(500).json(formatError(error));
+        throw error;
     }
 }

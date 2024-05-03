@@ -33,8 +33,10 @@ export default function RootLayout({
             >
                 <StoreProvider
                     initialState={{
-                        user: null,
-                        token: null,
+                        auth: {
+                            user: null,
+                            token: null,
+                        },
                     }}
                 >
                     <NextTopLoader />
