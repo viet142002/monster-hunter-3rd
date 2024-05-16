@@ -1,28 +1,28 @@
-import { HTMLRender } from '@/components/common';
-import { getDetailData } from '@/services/get-data';
-import { Post } from '@/types';
+import { HTMLRender } from "@/components/common";
+import { getDetailData } from "@/services/get-data";
+import { Post } from "@/types";
 
 async function DetailPage({
-    searchParams,
+	searchParams,
 }: {
-    searchParams: {
-        type: string;
-        id: string;
-        [key: string]: string | undefined;
-    };
+	searchParams: {
+		type: string;
+		id: string;
+		[key: string]: string | undefined;
+	};
 }) {
-    const { data } = await getDetailData(searchParams.id);
+	const { data } = await getDetailData(searchParams.id);
 
-    return (
-        <div>
-            <h1>Detail Page</h1>
-            <p>Type: {searchParams.type}</p>
-            <p>ID: {searchParams.id}</p>
+	return (
+		<article className=''>
+			<h1>Detail Page</h1>
+			<p>Type: {searchParams.type}</p>
+			<p>ID: {searchParams.id}</p>
 
-            <h2>{data.title}</h2>
-            <HTMLRender htmlContent={data.body} />
-        </div>
-    );
+			<h2>{data.title}</h2>
+			<HTMLRender htmlContent={data.body} />
+		</article>
+	);
 }
 
 export default DetailPage;
