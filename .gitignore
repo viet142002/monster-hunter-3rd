@@ -6,6 +6,10 @@
 .pnp.js
 .yarn/install-state.gz
 
+/public/sw*
+/public/workbox-*
+/public/fallback*
+
 # testing
 /coverage
 

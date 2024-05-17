@@ -3,7 +3,7 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
-import { HeaderPrimary, MobileNav } from "@/components/layout";
+import { BottomNavMobile, HeaderPrimary, MobileNav } from "@/components/layout";
 import { Toaster } from "@/components/ui/sonner";
 import NextTopLoader from "nextjs-toploader";
 import StoreProvider from "@/redux/StoreProvider";
@@ -85,6 +85,7 @@ export default function RootLayout({
 					<NextTopLoader />
 					<HeaderPrimary />
 					<MobileNav />
+					{/* <BottomNavMobile /> */}
 					<div className='max-w-[1000px] mx-auto px-2 pb-4 md:mt-20'>
 						{children}
 					</div>

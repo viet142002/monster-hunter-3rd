@@ -19,30 +19,36 @@ export function MobileNav() {
 	const [open, setOpen] = useState(false);
 
 	return (
-		<Sheet open={open} onOpenChange={setOpen}>
-			<SheetTrigger asChild>
-				<Button variant='ghost' size='icon' className='md:hidden'>
-					<HamburgerMenuIcon width={18} height={18} />
-				</Button>
-			</SheetTrigger>
+		<div className='sticky top-0'>
+			<Sheet open={open} onOpenChange={setOpen}>
+				<SheetTrigger asChild>
+					<Button variant='ghost' size='icon' className='md:hidden'>
+						<HamburgerMenuIcon width={18} height={18} />
+					</Button>
+				</SheetTrigger>
 
-			<SheetContent side='left'>
-				<NavigationMenu>
-					<NavigationMenuList>
-						{MenuHeader.map(item => (
-							<NavigationMenuItem key={item.id}>
-								<Link href={item.href} legacyBehavior passHref>
-									<NavigationMenuLink
-										className={navigationMenuTriggerStyle()}
+				<SheetContent side='left'>
+					<NavigationMenu>
+						<NavigationMenuList>
+							{MenuHeader.map(item => (
+								<NavigationMenuItem key={item.id}>
+									<Link
+										href={item.href}
+										legacyBehavior
+										passHref
 									>
-										{item.title}
-									</NavigationMenuLink>
-								</Link>
-							</NavigationMenuItem>
-						))}
-					</NavigationMenuList>
-				</NavigationMenu>
-			</SheetContent>
-		</Sheet>
+										<NavigationMenuLink
+											className={navigationMenuTriggerStyle()}
+										>
+											{item.title}
+										</NavigationMenuLink>
+									</Link>
+								</NavigationMenuItem>
+							))}
+						</NavigationMenuList>
+					</NavigationMenu>
+				</SheetContent>
+			</Sheet>
+		</div>
 	);
 }
